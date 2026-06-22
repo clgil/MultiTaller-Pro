@@ -6,8 +6,8 @@
 <div class="mb-3">
     <a href="{{ url_for('inventario.listar_piezas') }}" class="btn btn-secondary">← Volver</a>
     <a href="{{ url_for('inventario.editar_pieza', id=pieza.id) }}" class="btn btn-primary">Editar</a>
-    <a href="{{ url_for('inventario.entrada_pieza', id=pieza.id) }}" class="btn btn-success">Registrar Entrada</a>
-    <a href="{{ url_for('inventario.salida_pieza', id=pieza.id) }}" class="btn btn-warning">Registrar Salida</a>
+    <a href="{{ url_for('inventario.registrar_entrada', id=pieza.id) }}" class="btn btn-success">Registrar Entrada</a>
+    <a href="{{ url_for('inventario.registrar_salida', id=pieza.id) }}" class="btn btn-warning">Registrar Salida</a>
 </div>
 
 <h2 class="mb-4">🔩 {{ pieza.nombre }}</h2>
