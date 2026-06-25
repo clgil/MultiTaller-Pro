@@ -118,7 +118,11 @@ def activacion():
     btc = Configuracion.query.filter_by(clave='btc_address').first()
     usdt = Configuracion.query.filter_by(clave='usdt_address').first()
     
+    # Obtener ID de máquina actual
+    id_maquina = generar_id_maquina()
+    
     return render_template('licencias/activacion.html',
+                         id_maquina=id_maquina,
                          email=email.valor if email else 'megashopsc20@gmail.com',
                          telefono=telefono.valor if telefono else '+53 50625350',
                          qbapay_link=qbapay.valor if qbapay else '',

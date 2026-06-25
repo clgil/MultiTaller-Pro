@@ -2,15 +2,41 @@
 {% block title %}Activar Licencia - MultiTaller{% endblock %}
 {% block content %}
 <h2 class="mb-4">🔑 Activar Licencia</h2>
+
+<div class="alert alert-info mb-4">
+    <strong>ID de tu PC:</strong> <code id="id_maquina">{{ id_maquina }}</code>
+    <button class="btn btn-sm btn-outline-primary ms-2" onclick="copiarIdMaquina()">Copiar</button>
+    <p class="mb-0 mt-2 text-muted">Envía este ID para que te generen el código de activación.</p>
+</div>
+
 <div class="card">
     <div class="card-body">
         <form method="POST">
             <div class="mb-3">
                 <label class="form-label">Código de Licencia</label>
-                <input type="text" class="form-control" name="codigo_licencia" required>
+                <input type="text" class="form-control" name="codigo_activacion" required>
             </div>
             <button type="submit" class="btn btn-primary">Activar</button>
         </form>
     </div>
 </div>
+
+<script>
+function copiarIdMaquina() {
+    const idMaquina = document.getElementById('id_maquina').textContent;
+    navigator.clipboard.writeText(idMaquina).then(() => {
+        alert('ID de máquina copiado al portapapeles');
+    }).catch(err => {
+        console.error('Error al copiar:', err);
+        // Fallback para navegadores antiguos
+        const textarea = document.createElement('textarea');
+        textarea.value = idMaquina;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        alert('ID de máquina copiado al portapapeles');
+    });
+}
+</script>
 {% endblock %}
