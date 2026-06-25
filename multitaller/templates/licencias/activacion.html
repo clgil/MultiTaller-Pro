@@ -3,20 +3,118 @@
 {% block content %}
 <h2 class="mb-4">🔑 Activar Licencia</h2>
 
-<div class="alert alert-info mb-4">
-    <strong>ID de tu PC:</strong> <code id="id_maquina">{{ id_maquina }}</code>
-    <button class="btn btn-sm btn-outline-primary ms-2" onclick="copiarIdMaquina()">Copiar</button>
-    <p class="mb-0 mt-2 text-muted">Envía este ID para que te generen el código de activación.</p>
+<!-- Información permanente del ID de la PC -->
+<div class="card border-primary mb-4">
+    <div class="card-header bg-primary text-white">
+        <h5 class="mb-0">📌 ID de tu PC (Requerido para activación)</h5>
+    </div>
+    <div class="card-body">
+        <p class="card-text">
+            <strong>Este es el identificador único de tu equipo.</strong> Debes enviarlo para recibir tu código de activación.
+        </p>
+        <div class="alert alert-info">
+            <code id="id_maquina" style="font-size: 1.2em; font-weight: bold;">{{ id_maquina }}</code>
+            <button class="btn btn-sm btn-outline-primary ms-3" onclick="copiarIdMaquina()">
+                <i class="bi bi-clipboard"></i> Copiar ID
+            </button>
+        </div>
+        <p class="text-muted small mb-0">
+            💡 <strong>Importante:</strong> Este ID permanecerá visible hasta que actives el programa en esta PC.
+        </p>
+    </div>
 </div>
 
+<!-- Información de contacto -->
+<div class="card border-info mb-4">
+    <div class="card-header bg-info text-white">
+        <h5 class="mb-0">📞 Información de Contacto</h5>
+    </div>
+    <div class="card-body">
+        <p class="card-text">Envía tu ID de PC a través de cualquiera de estos medios para solicitar tu licencia:</p>
+        <ul class="list-unstyled">
+            <li class="mb-2">
+                <strong>📧 Email:</strong> 
+                <a href="mailto:{{ email }}">{{ email }}</a>
+            </li>
+            <li class="mb-2">
+                <strong>📱 Teléfono / WhatsApp:</strong> 
+                <a href="https://wa.me/{{ telefono|replace('+', '') }}" target="_blank">{{ telefono }}</a>
+            </li>
+            {% if qbapay_link %}
+            <li class="mb-2">
+                <strong>💳 QbaPay:</strong> 
+                <a href="{{ qbapay_link }}" target="_blank">Realizar pago</a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+</div>
+
+<!-- Precios de licencias -->
+<div class="card border-success mb-4">
+    <div class="card-header bg-success text-white">
+        <h5 class="mb-0">💰 Tipos de Licencia y Precios</h5>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <div class="card h-100 border-primary">
+                    <div class="card-header bg-primary text-white text-center">
+                        <h6>Estándar</h6>
+                    </div>
+                    <div class="card-body text-center">
+                        <p class="card-text"><strong>1 taller, 1 PC</strong></p>
+                        <h4 class="text-primary">3500 CUP</h4>
+                        <p class="text-muted">o 15 USD</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card h-100 border-warning">
+                    <div class="card-header bg-warning text-dark text-center">
+                        <h6>Ampliada</h6>
+                    </div>
+                    <div class="card-body text-center">
+                        <p class="card-text"><strong>2 PCs mismo taller</strong></p>
+                        <h4 class="text-warning">6000 CUP</h4>
+                        <p class="text-muted">o 25 USD</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card h-100 border-success">
+                    <div class="card-header bg-success text-white text-center">
+                        <h6>Sucursales</h6>
+                    </div>
+                    <div class="card-body text-center">
+                        <p class="card-text"><strong>Hasta 5 instalaciones</strong></p>
+                        <h4 class="text-success">12000 CUP</h4>
+                        <p class="text-muted">o 50 USD</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Formulario de activación -->
 <div class="card">
+    <div class="card-header">
+        <h5 class="mb-0">🔐 Ingresar Código de Activación</h5>
+    </div>
     <div class="card-body">
         <form method="POST">
             <div class="mb-3">
                 <label class="form-label">Código de Licencia</label>
-                <input type="text" class="form-control" name="codigo_activacion" required>
+                <input type="text" class="form-control" name="codigo_activacion" required 
+                       placeholder="Ejemplo: ABC123-estandar-XYZ789">
+                <small class="form-text text-muted">
+                    El código te será enviado después de proporcionar tu ID de PC y realizar el pago.
+                </small>
             </div>
-            <button type="submit" class="btn btn-primary">Activar</button>
+            <button type="submit" class="btn btn-primary btn-lg">
+                <i class="bi bi-check-circle"></i> Activar Sistema
+            </button>
         </form>
     </div>
 </div>
