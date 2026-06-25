@@ -59,3 +59,16 @@
 .bi-eye-slash-fill::before { content: "\F330"; }
 .bi-x::before { content: "\F6C6"; }
 .bi-caret-down-fill::before { content: "\F275"; }
+
+/* Iconos adicionales para el sidebar de MultiTaller */
+.bi-wrench-adjustable::before { content: "\F6C5"; }
+.bi-toggles::before { content: "\F694"; }
+.bi-list-ol::before { content: "\F3E1"; }
+.bi-pc-display::before { content: "\F619"; }
+.bi-grid::before { content: "\F380"; }
+.bi-box::before { content: "\F267"; }
+.bi-cash-stack::before { content: "\F274"; }
+.bi-bar-chart::before { content: "\F238"; }
+.bi-award::before { content: "\F224"; }
+.bi-crown::before { content: "\F2C8"; }
+.bi-moon-stars-fill::before { content: "\F43D"; }
