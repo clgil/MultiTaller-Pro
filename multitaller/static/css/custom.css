@@ -1004,6 +1004,14 @@ a:hover {
     color: var(--text-primary) !important;
 }
 
+/* Asegurar legibilidad en modo oscuro para todos los elementos de tabla */
+[data-theme="dark"] .table tbody td,
+[data-theme="dark"] .table tbody td *,
+body:not([data-theme="light"]) .table tbody td,
+body:not([data-theme="light"]) .table tbody td * {
+    color: #F3F4F6 !important;
+}
+
 .table a {
     color: var(--primary) !important;
     text-decoration: none;
@@ -1021,19 +1029,36 @@ a:hover {
 }
 
 /* Modo oscuro - Asegurar legibilidad en tablas */
+[data-theme="dark"] .table td,
+[data-theme="dark"] .table th,
 body:not([data-theme="light"]) .table td,
 body:not([data-theme="light"]) .table th {
     color: var(--text-primary) !important;
 }
 
+[data-theme="dark"] .table a,
 body:not([data-theme="light"]) .table a {
     color: var(--primary) !important;
 }
 
+[data-theme="dark"] .table a:hover,
+body:not([data-theme="light"]) .table a:hover {
+    color: var(--primary-hover) !important;
+}
+
+[data-theme="dark"] .table .text-muted,
+[data-theme="dark"] .table small,
+[data-theme="dark"] .table small *,
 body:not([data-theme="light"]) .table .text-muted,
 body:not([data-theme="light"]) .table small,
 body:not([data-theme="light"]) .table small * {
     color: var(--text-secondary) !important;
+}
+
+/* Asegurar que badges en tablas sean legibles */
+[data-theme="dark"] .table .badge,
+body:not([data-theme="light"]) .table .badge {
+    color: white !important;
 }
 
 /* ==========================================================================
@@ -1086,24 +1111,66 @@ body:not([data-theme="light"]) .table small * {
     font-weight: 600;
 }
 
+/* Modo oscuro para badges en tablas */
+[data-theme="dark"] .table .badge-soft-success,
 body:not([data-theme="light"]) .table .badge-soft-success {
     background-color: var(--success-bg);
     color: #6EE7B7 !important;
 }
 
+[data-theme="dark"] .table .badge-soft-warning,
 body:not([data-theme="light"]) .table .badge-soft-warning {
     background-color: var(--warning-bg);
     color: #FCD34D !important;
 }
 
+[data-theme="dark"] .table .badge-soft-danger,
 body:not([data-theme="light"]) .table .badge-soft-danger {
     background-color: var(--danger-bg);
     color: #F87171 !important;
 }
 
+[data-theme="dark"] .table .badge-soft-info,
 body:not([data-theme="light"]) .table .badge-soft-info {
     background-color: var(--info-bg);
     color: #67E8F9 !important;
+}
+
+/* Badges normales en tablas - modo oscuro */
+[data-theme="dark"] .table .badge.bg-primary,
+body:not([data-theme="light"]) .table .badge.bg-primary {
+    background-color: var(--primary) !important;
+    color: white !important;
+}
+
+[data-theme="dark"] .table .badge.bg-success,
+body:not([data-theme="light"]) .table .badge.bg-success {
+    background-color: var(--success) !important;
+    color: white !important;
+}
+
+[data-theme="dark"] .table .badge.bg-warning,
+body:not([data-theme="light"]) .table .badge.bg-warning {
+    background-color: var(--warning) !important;
+    color: #000 !important;
+}
+
+[data-theme="dark"] .table .badge.bg-danger,
+body:not([data-theme="light"]) .table .badge.bg-danger {
+    background-color: var(--danger) !important;
+    color: white !important;
+}
+
+[data-theme="dark"] .table .badge.bg-info,
+body:not([data-theme="light"]) .table .badge.bg-info {
+    background-color: var(--info) !important;
+    color: white !important;
+}
+
+[data-theme="dark"] .table .badge.bg-secondary,
+body:not([data-theme="light"]) .table .badge.bg-secondary {
+    background-color: var(--secondary) !important;
+    color: white !important;
 }
 
 /* ==========================================================================
@@ -1401,6 +1468,14 @@ body:not([data-theme="light"]) .table .badge-soft-info {
     .table-responsive {
         border-radius: var(--radius-lg);
         box-shadow: var(--shadow-sm);
+    }
+    
+    /* Asegurar legibilidad de tablas en móviles con modo oscuro */
+    [data-theme="dark"] .table-responsive table td,
+    [data-theme="dark"] .table-responsive table th,
+    body:not([data-theme="light"]) .table-responsive table td,
+    body:not([data-theme="light"]) .table-responsive table th {
+        color: #F3F4F6 !important;
     }
 }
 
