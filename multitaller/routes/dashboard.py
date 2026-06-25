@@ -33,7 +33,7 @@ def index():
     
     # Contadores de órdenes
     ordenes_activas = Orden.query.filter(
-        Orden.estado_general.notin_(['Entregado', 'Cancelado'])
+        Orden.estado_general.not_in(['Entregado', 'Cancelado'])
     ).count()
     
     ordenes_pendientes_diagnostico = Orden.query.filter_by(estado_general='En diagnóstico').count()
