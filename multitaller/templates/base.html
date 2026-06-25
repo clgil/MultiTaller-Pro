@@ -45,12 +45,12 @@
                 </a>
                 
                 <a href="{{ url_for('modelos.listar_modelos') }}" class="sidebar-item {% if 'modelos' in request.endpoint %}active{% endif %}">
-                    <span class="sidebar-item-icon"><i class="bi bi-box-seam"></i></span>
+                    <span class="sidebar-item-icon"><i class="bi bi-pc-display-horizontal"></i></span>
                     <span class="sidebar-item-text">Modelos de Equipos</span>
                 </a>
                 
                 <a href="{{ url_for('inventario.listar_piezas') }}" class="sidebar-item {% if 'inventario' in request.endpoint %}active{% endif %}">
-                    <span class="sidebar-item-icon"><i class="bi bi-gear"></i></span>
+                    <span class="sidebar-item-icon"><i class="bi bi-box-seam"></i></span>
                     <span class="sidebar-item-text">Inventario</span>
                 </a>
                 
@@ -66,7 +66,7 @@
                 </a>
                 
                 <a href="{{ url_for('contratos.listar_contratos') }}" class="sidebar-item {% if 'contratos' in request.endpoint %}active{% endif %}">
-                    <span class="sidebar-item-icon"><i class="bi bi-file-earmark-text"></i></span>
+                    <span class="sidebar-item-icon"><i class="bi bi-file-earmark-ruled"></i></span>
                     <span class="sidebar-item-text">Contratos</span>
                 </a>
                 
@@ -91,7 +91,7 @@
                 </a>
                 
                 <a href="{{ url_for('licencias.gestionar_licencias') }}" class="sidebar-item {% if 'licencias.gestionar' in request.endpoint %}active{% endif %}">
-                    <span class="sidebar-item-icon"><i class="bi bi-patch-check"></i></span>
+                    <span class="sidebar-item-icon"><i class="bi bi-key-fill"></i></span>
                     <span class="sidebar-item-text">Licencias</span>
                 </a>
                 {% endif %}
