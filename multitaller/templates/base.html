@@ -133,18 +133,6 @@
                     <span class="notification-badge">3</span>
                 </button>
                 
-                <!-- Selector de período (solo en dashboard) -->
-                {% if request.endpoint == 'dashboard.index' %}
-                <div class="period-selector d-none d-md-block">
-                    <div class="btn-group btn-group-sm" role="group">
-                        <a href="{{ url_for('dashboard.index', periodo='hoy') }}" class="btn btn-outline-primary {% if periodo == 'hoy' %}active{% endif %}">Hoy</a>
-                        <a href="{{ url_for('dashboard.index', periodo='semana') }}" class="btn btn-outline-primary {% if periodo == 'semana' %}active{% endif %}">Semana</a>
-                        <a href="{{ url_for('dashboard.index', periodo='mes') }}" class="btn btn-outline-primary {% if periodo == 'mes' %}active{% endif %}">Mes</a>
-                        <a href="{{ url_for('dashboard.index', periodo='ano') }}" class="btn btn-outline-primary {% if periodo == 'ano' %}active{% endif %}">Año</a>
-                    </div>
-                </div>
-                {% endif %}
-                
                 <!-- Menú de usuario -->
                 <div class="dropdown">
                     <div class="user-menu" data-bs-toggle="dropdown">
