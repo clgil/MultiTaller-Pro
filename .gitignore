@@ -5,27 +5,20 @@ __pycache__/
 *.pyo
 *.pyd
 
-# Database
-instance/*.db
-
-# Environment
+# Dependencies
+venv/
+.venv/
 .env
 .env.local
 *.env.*
 
-# Dependencies
-.venv/
-venv/
-env/
-ENV/
-
 # Logs
 *.log
 
-# Coverage reports
+# Coverage
 .coverage
-htmlcov/
 coverage/
+htmlcov/
 
 # IDE
 .vscode/
@@ -34,7 +27,8 @@ coverage/
 *.swo
 *.tmp
 
-# OS
-.DS_Store
-Thumbs.db
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
 ```

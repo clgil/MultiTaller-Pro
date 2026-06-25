@@ -4,13 +4,14 @@ Sistema Integral de Gestión para Taller de Reparación de Equipos Informáticos
 """
 
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import UserMixin
 from datetime import datetime
 import json
 
 db = SQLAlchemy()
 
 
-class Usuario(db.Model):
+class Usuario(UserMixin, db.Model):
     """Tabla de usuarios con roles"""
     __tablename__ = 'usuarios'
     
