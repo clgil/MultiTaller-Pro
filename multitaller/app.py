@@ -8,6 +8,7 @@ import sys
 import json
 from datetime import datetime, timedelta, timezone
 from flask import Flask, render_template, redirect, url_for, flash, session, request, jsonify
+from flask_login import LoginManager
 from werkzeug.security import generate_password_hash, check_password_hash
 from models import db, Usuario, Configuracion, Licencia
 
@@ -51,6 +52,13 @@ def create_app():
     
     # Inicializar extensiones
     db.init_app(app)
+    login_manager = LoginManager()
+    login_manager.init_app(app)
+    login_manager.login_view = 'auth.login'
+    
+    @login_manager.user_loader
+    def load_user(user_id):
+        return Usuario.query.get(int(user_id))
     
     # Registrar blueprints
     app.register_blueprint(auth_bp)
