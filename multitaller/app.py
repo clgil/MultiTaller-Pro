@@ -27,6 +27,7 @@ from routes.reportes import reportes_bp
 from routes.configuracion import configuracion_bp
 from routes.licencias import licencias_bp
 from routes.ayuda import ayuda_bp
+from routes.notificaciones import notificaciones_bp as notificaciones_bp
 
 
 def create_app():
@@ -67,6 +68,7 @@ def create_app():
     app.register_blueprint(configuracion_bp)
     app.register_blueprint(licencias_bp)
     app.register_blueprint(ayuda_bp)
+    app.register_blueprint(notificaciones_bp)
     
     @app.route('/')
     def index():

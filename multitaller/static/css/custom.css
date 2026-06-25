@@ -331,6 +331,26 @@ a:hover {
     border: 2px solid var(--surface);
 }
 
+/* Dropdown de notificaciones */
+.notification-dropdown {
+    animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.notification-item-hover:hover {
+    background-color: var(--surface-hover) !important;
+}
+
 /* Banner de período de prueba */
 .trial-banner {
     animation: pulse-glow 2s infinite;

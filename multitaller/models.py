@@ -434,3 +434,30 @@ class Licencia(db.Model):
     fecha_generacion = db.Column(db.DateTime, default=datetime.utcnow)
     activa = db.Column(db.Boolean, default=True)
     notas = db.Column(db.Text)
+
+
+class Notificacion(db.Model):
+    """Sistema de notificaciones del taller"""
+    __tablename__ = 'notificaciones'
+    
+    id = db.Column(db.Integer, primary_key=True)
+    usuario_id = db.Column(db.Integer, db.ForeignKey('usuarios.id'), nullable=False)
+    titulo = db.Column(db.String(200), nullable=False)
+    mensaje = db.Column(db.Text, nullable=False)
+    tipo = db.Column(db.String(20), default='info')  # info, success, warning, danger
+    leida = db.Column(db.Boolean, default=False)
+    fecha_creacion = db.Column(db.DateTime, default=datetime.utcnow)
+    enlace = db.Column(db.String(255))  # URL opcional para redireccionar
+    
+    usuario = db.relationship('Usuario', backref='notificaciones')
+    
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'titulo': self.titulo,
+            'mensaje': self.mensaje,
+            'tipo': self.tipo,
+            'leida': self.leida,
+            'fecha_creacion': self.fecha_creacion.strftime('%Y-%m-%d %H:%M') if self.fecha_creacion else '',
+            'enlace': self.enlace
+        }

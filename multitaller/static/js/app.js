@@ -309,6 +309,107 @@ document.addEventListener('DOMContentLoaded', function() {
         return new bootstrap.Popover(popoverTriggerEl);
     });
     
+    // ==========================================================================
+    // SISTEMA DE NOTIFICACIONES
+    // ==========================================================================
+    
+    const notificationBtn = document.getElementById('btn-notificaciones');
+    
+    if (notificationBtn) {
+        // Cargar notificaciones al hacer clic en el botón
+        notificationBtn.addEventListener('click', function() {
+            cargarNotificacionesDropdown();
+        });
+        
+        // Auto-actualizar cada 30 segundos
+        setInterval(cargarNotificacionesDropdown, 30000);
+    }
+    
+    function cargarNotificacionesDropdown() {
+        fetch('/api/notificaciones/list')
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById('notification-dropdown-list');
+                const badge = document.querySelector('.notification-badge');
+                
+                // Actualizar badge
+                if (badge) {
+                    if (data.total > 0) {
+                        badge.textContent = data.total > 9 ? '9+' : data.total;
+                        badge.style.display = 'flex';
+                    } else {
+                        badge.style.display = 'none';
+                    }
+                }
+                
+                // Renderizar lista
+                if (data.notificaciones && data.notificaciones.length > 0) {
+                    let html = '';
+                    data.notificaciones.forEach(notif => {
+                        const iconClass = getNotificationIcon(notif.tipo);
+                        const colorClass = getNotificationColor(notif.tipo);
+                        
+                        html += `
+                            <div class="p-3 border-bottom notification-item-hover" style="cursor: pointer;" onclick="${notif.enlace ? "window.location.href='"+notif.enlage+"'" : 'marcarLeidaFromDropdown('+notif.id+')'}">
+                                <div class="d-flex align-items-start">
+                                    <i class="bi ${iconClass} ${colorClass} me-2 fs-5"></i>
+                                    <div class="flex-grow-1">
+                                        <h6 class="mb-1 small fw-semibold">${notif.titulo}</h6>
+                                        <p class="mb-1 small text-muted">${notif.mensaje.substring(0, 80)}${notif.mensaje.length > 80 ? '...' : ''}</p>
+                                        <small class="text-muted" style="font-size: 0.7rem;">${notif.fecha_creacion}</small>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    container.innerHTML = html;
+                } else {
+                    container.innerHTML = `
+                        <div class="text-center py-4 text-muted">
+                            <i class="bi bi-bell-slash fs-3"></i>
+                            <p class="mb-0 mt-2 small">No hay notificaciones nuevas</p>
+                        </div>
+                    `;
+                }
+            })
+            .catch(error => {
+                console.error('Error cargando notificaciones:', error);
+            });
+    }
+    
+    function getNotificationIcon(tipo) {
+        switch(tipo) {
+            case 'danger': return 'bi-exclamation-triangle-fill';
+            case 'warning': return 'bi-exclamation-circle-fill';
+            case 'success': return 'bi-check-circle-fill';
+            default: return 'bi-info-circle-fill';
+        }
+    }
+    
+    function getNotificationColor(tipo) {
+        switch(tipo) {
+            case 'danger': return 'text-danger';
+            case 'warning': return 'text-warning';
+            case 'success': return 'text-success';
+            default: return 'text-primary';
+        }
+    }
+    
+    function marcarLeidaFromDropdown(id) {
+        fetch(`/notificaciones/marcar_leida/${id}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                cargarNotificacionesDropdown();
+            }
+        });
+    }
+
 });
 
 // ==========================================================================
