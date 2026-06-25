@@ -34,7 +34,9 @@ document.addEventListener('DOMContentLoaded', function() {
         if (themeToggleBtn) {
             const icon = themeToggleBtn.querySelector('i');
             if (icon) {
-                icon.className = isDark ? 'bi bi-sun-fill' : 'bi bi-moon-fill';
+                // isDark=true significa modo oscuro activo -> mostrar sol (para cambiar a light)
+                // isDark=false significa modo light activo -> mostrar luna (para cambiar a dark)
+                icon.className = isDark ? 'bi bi-sun-fill' : 'bi bi-moon-stars-fill';
             }
         }
     }
