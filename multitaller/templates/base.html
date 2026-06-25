@@ -128,10 +128,28 @@
                 </button>
                 
                 <!-- Notificaciones -->
-                <button class="notification-btn" title="Notificaciones">
+                <button class="notification-btn" title="Notificaciones" id="btn-notificaciones" data-bs-toggle="dropdown">
                     <i class="bi bi-bell-fill"></i>
-                    <span class="notification-badge">3</span>
+                    <span class="notification-badge" style="display: none;">0</span>
                 </button>
+                
+                <!-- Dropdown de notificaciones -->
+                <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 p-0 notification-dropdown" style="min-width: 350px; max-width: 350px;">
+                    <li class="p-3 border-bottom">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h6 class="mb-0 fw-bold"><i class="bi bi-bell me-2"></i>Notificaciones</h6>
+                            <a href="{{ url_for('notificaciones.listar_notificaciones') }}" class="btn btn-sm btn-link text-decoration-none">Ver todas</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="notification-dropdown-content" style="max-height: 400px; overflow-y: auto;" id="notification-dropdown-list">
+                            <div class="text-center py-4 text-muted">
+                                <i class="bi bi-hourglass-split fs-3"></i>
+                                <p class="mb-0 mt-2 small">Cargando...</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
                 
                 <!-- Menú de usuario -->
                 <div class="dropdown">
