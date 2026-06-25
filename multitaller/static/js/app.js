@@ -350,7 +350,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         const colorClass = getNotificationColor(notif.tipo);
                         
                         html += `
-                            <div class="p-3 border-bottom notification-item-hover" style="cursor: pointer;" onclick="${notif.enlace ? "window.location.href='"+notif.enlage+"'" : 'marcarLeidaFromDropdown('+notif.id+')'}">
+                            <div class="p-3 border-bottom notification-item-hover" style="cursor: pointer;" onclick="${notif.enlace ? "window.location.href='"+notif.enlace+"'" : 'marcarLeidaFromDropdown('+notif.id+')'}">
                                 <div class="d-flex align-items-start">
                                     <i class="bi ${iconClass} ${colorClass} me-2 fs-5"></i>
                                     <div class="flex-grow-1">

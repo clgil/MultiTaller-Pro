@@ -59,7 +59,7 @@ def verificar_y_crear_notificaciones():
     """Verifica condiciones y crea notificaciones automáticas"""
     # 1. Órdenes próximas a vencer
     ordenes_proximas = Orden.query.filter(
-        Orden.estado_general.notin_(['Completado', 'Cancelado']),
+        Orden.estado_general.not_in(['Completado', 'Cancelado']),
         Orden.fecha_entrega_prevista <= datetime.utcnow() + timedelta(days=2),
         Orden.fecha_entrega_prevista >= datetime.utcnow()
     ).all()
