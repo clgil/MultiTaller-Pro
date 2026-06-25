@@ -8,7 +8,7 @@
 <div class="row g-4 mb-4">
     <div class="col-md-6 col-xl-3">
         <div class="summary-card primary animate-fade-in-up delay-1">
-            <span class="summary-card-icon"><i class="bi bi-clipboard-check"></i></span>
+            <span class="summary-card-icon"><i class="bi bi-journal-check"></i></span>
             <div class="summary-card-label">Órdenes Activas</div>
             <div class="summary-card-value">{{ ordenes_activas }}</div>
             <a href="{{ url_for('ordenes.listar_ordenes') }}" class="summary-card-link">Ver todas →</a>
@@ -17,7 +17,7 @@
     
     <div class="col-md-6 col-xl-3">
         <div class="summary-card warning animate-fade-in-up delay-2">
-            <span class="summary-card-icon"><i class="bi bi-hourglass-split"></i></span>
+            <span class="summary-card-icon"><i class="bi bi-clock-history"></i></span>
             <div class="summary-card-label">Pendientes Diagnóstico</div>
             <div class="summary-card-value">{{ ordenes_pendientes_diagnostico }}</div>
         </div>
@@ -25,7 +25,7 @@
     
     <div class="col-md-6 col-xl-3">
         <div class="summary-card success animate-fade-in-up delay-3">
-            <span class="summary-card-icon"><i class="bi bi-check-circle"></i></span>
+            <span class="summary-card-icon"><i class="bi bi-bag-check"></i></span>
             <div class="summary-card-label">Listas para Entregar</div>
             <div class="summary-card-value">{{ ordenes_listas_entregar }}</div>
         </div>
@@ -33,7 +33,7 @@
     
     <div class="col-md-6 col-xl-3">
         <div class="summary-card danger animate-fade-in-up delay-4">
-            <span class="summary-card-icon"><i class="bi bi-exclamation-triangle"></i></span>
+            <span class="summary-card-icon"><i class="bi bi-exclamation-octagon"></i></span>
             <div class="summary-card-label">Piezas Bajo Stock</div>
             <div class="summary-card-value">{{ piezas_bajo_stock|length }}</div>
             {% if piezas_bajo_stock %}
@@ -48,7 +48,7 @@
     <div class="col-lg-6">
         <div class="card h-100 animate-fade-in-up">
             <div class="card-header bg-info text-white">
-                <i class="bi bi-bell me-2"></i>Próximos Mantenimientos (esta semana)
+                <i class="bi bi-calendar-event me-2"></i>Próximos Mantenimientos (esta semana)
             </div>
             <div class="card-body p-0">
                 {% if proximos_mantenimientos %}
@@ -73,7 +73,7 @@
     <div class="col-lg-6">
         <div class="card h-100 animate-fade-in-up">
             <div class="card-header bg-warning">
-                <i class="bi bi-shield-exclamation me-2"></i>Garantías por Vencer (15 días)
+                <i class="bi bi-shield-check me-2"></i>Garantías por Vencer (15 días)
             </div>
             <div class="card-body p-0">
                 {% if garantias_por_vencer %}
@@ -98,7 +98,7 @@
 <!-- Panel Financiero -->
 <div class="card mb-4 animate-fade-in-up">
     <div class="card-header bg-dark text-white">
-        <i class="bi bi-currency-dollar me-2"></i>Panel Financiero ({{ periodo }})
+        <i class="bi bi-cash-stack me-2"></i>Panel Financiero ({{ periodo }})
     </div>
     <div class="card-body">
         <div class="row g-4 mb-4">
@@ -154,7 +154,7 @@
 <!-- Últimas órdenes -->
 <div class="card animate-fade-in-up">
     <div class="card-header d-flex justify-content-between align-items-center">
-        <span><i class="bi bi-list-ul me-2"></i>Últimas Órdenes</span>
+        <span><i class="bi bi-journal-text me-2"></i>Últimas Órdenes</span>
         <a href="{{ url_for('ordenes.listar_ordenes') }}" class="btn btn-sm btn-outline-primary">Ver todas</a>
     </div>
     <div class="card-body p-0">
