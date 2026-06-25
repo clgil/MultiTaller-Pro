@@ -125,7 +125,11 @@ def editar_configuracion():
         tramos_isip.append({'hasta': '', 'porcentaje': 0})
     
     # Obtener logo actual
-    logo_actual = LogoTaller.query.filter_by(activo=True).first()
+    logo_actual = None
+    try:
+        logo_actual = LogoTaller.query.filter_by(activo=True).first()
+    except Exception:
+        logo_actual = None
     
     return render_template('configuracion/editar.html', 
                          configs=configs_dict,

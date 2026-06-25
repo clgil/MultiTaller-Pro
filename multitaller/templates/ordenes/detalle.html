@@ -17,9 +17,13 @@
         <div class="row">
             <div class="col-md-6">
                 <p><strong>Cliente:</strong> 
-                    <a href="{{ url_for('clientes.ver_cliente', id=orden.cliente.id) }}">
-                        {{ orden.cliente.nombre_completo }}
-                    </a>
+                    {% if orden.cliente %}
+                        <a href="{{ url_for('clientes.ver_cliente', id=orden.cliente.id) }}">
+                            {{ orden.cliente.nombre_completo }}
+                        </a>
+                    {% else %}
+                        <span class="text-muted">Sin cliente asignado</span>
+                    {% endif %}
                 </p>
                 <p><strong>Tipo Servicio:</strong> {{ orden.tipo_servicio }}</p>
                 <p><strong>Técnico Asignado:</strong> 
